@@ -1,4 +1,4 @@
-import { Handlers, PageProps } from "$fresh/server.ts"; 
+import { Handlers } from "$fresh/server.ts"; 
 import { supabase } from "../../db.ts";
 
 export const handler: Handlers = {

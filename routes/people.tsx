@@ -5,9 +5,10 @@ export default async function PeoplePage() {
   const { data: people, error } = await supabase
     .from("people") // this needs to match the table name in Supabase (in case you rename later)
     .select("*")
-    .order("name", { ascending: true });
+    .order("status", { ascending: true });
 
   if (error) {
+    // add in an error message incase an issues fetching the data
     return <div class="p-8 text-red-500 font-bold">Database Error: {error.message}</div>;
   }
 
@@ -15,20 +16,23 @@ export default async function PeoplePage() {
     <div class="p-8 max-w-screen-lg mx-auto">
       <div class="flex justify-between items-center mb-6">
         <div>
+          {/*Header information - heading and subheading*/}
             <h1 class="text-3xl font-bold text-green-600">Employees</h1>
             <p class="text-gray-500">View employee information</p>
         </div>
+        {/*Buttons - back to home and add a person*/}
         <a href="/" class="text-blue-600 hover:underline">← Dashboard</a>
         <a href="/people/add" class="bg-emerald-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-emerald-700 transition-all shadow-md"> + Add Person</a>
       </div>
-
       <div class="bg-white border rounded-lg shadow-sm overflow-hidden">
         <table class="w-full text-left border-collapse">
           <thead class="bg-green-50 border-b text-green-800">
             <tr>
+              {/*Table column headers*/}
               <th class="p-4 font-semibold text-gray-700">Name</th>
               <th class="p-4 font-semibold text-gray-700">Role</th>
               <th class="p-4 font-semibold text-gray-700">Department</th>
+              <th class="p-4 font-semibold text-gray-700">Security Clearance</th>
               <th class="p-4 font-semibold text-gray-700 text-right">Status</th>
             </tr>
           </thead>
@@ -40,9 +44,11 @@ export default async function PeoplePage() {
             )}
             {people?.map((person) => (
               <tr key={person.id} class="hover:bg-gray-50 transition">
+                {/*Data to be pulled from the database */}
                 <td class="p-4 font-medium">{person.name}</td>
                 <td class="p-4 text-gray-600">{person.role}</td>
                 <td class="p-4 text-gray-600">{person.department}</td>
+                <td class="p-4 text-gray-600">{person.sc}</td>
                 <td class="p-4 text-right text-gray-600">{person.status}</td>
               </tr>
             ))}

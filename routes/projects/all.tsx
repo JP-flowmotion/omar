@@ -8,7 +8,6 @@ export default async function ProjectsPage() {
     .order("name", { ascending: true });
 
   if (error) {
-    // add in an error message incase an issues fetching the data
     return <div class="p-8 text-red-500 font-bold">Database Error: {error.message}</div>;
   }
 
@@ -16,20 +15,16 @@ export default async function ProjectsPage() {
     <div class="p-8 max-w-screen-lg mx-auto">
       <div class="flex justify-between items-center mb-6">
         <div>
-          {/*Header information - heading and subheading */}
-            <h1 class="text-3xl font-bold text-blue-600">Active Projects</h1>
-            <p class="text-gray-500">View Active Project information</p>
+            <h1 class="text-3xl font-bold text-blue-600">All Projects</h1>
+            <p class="text-gray-500">View All Historic Project information</p>
         </div>
-        {/*Buttons - return to dashboard and add a project */}
-        <a href="/" class="text-blue-600 hover:underline">← Dashboard</a>
-        <a href="/projects/add" class="bg-blue-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-blue-700 transition-all shadow-md"> + Add Project</a>
+        <a href="/projects" class="text-blue-600 hover:underline">← Active Projects</a>
       </div>
 
       <div class="bg-white border rounded-lg shadow-sm overflow-hidden">
         <table class="w-full text-left border-collapse">
           <thead class="bg-blue-50 border-b text-blue-800">
             <tr>
-              {/*Table column headers */}
               <th class="p-4 font-semibold text-gray-700">Name</th>
               <th class="p-4 font-semibold text-gray-700">Type</th>
               <th class="p-4 font-semibold text-gray-700">Status</th>
@@ -43,7 +38,6 @@ export default async function ProjectsPage() {
             )}
             {projects?.map((project) => (
               <tr key={project.id} class="hover:bg-gray-50 transition">
-                {/*Data to be pulled from the database */}
                 <td class="p-4 text-gray-600">{project.name}</td>
                 <td class="p-4 text-gray-600">{project.type}</td>
                 <td class="p-4 text-gray-600">{project.status}</td>
@@ -51,6 +45,9 @@ export default async function ProjectsPage() {
             ))}
           </tbody>
         </table>
+      </div>
+      <div>
+        <a href="/projects" class="bg-blue-600 text-white font-bold px-6 py-8 rounded-xl hover:bg-blue-700 transition-all shadow-md">Active Projects</a>
       </div>
     </div>
   );

@@ -31,11 +31,11 @@ export const handler: Handlers = {
 
 export default function AddOpportunityPage() {
     return (
-    <div class="min-h-screen bg-gray-50 p-8 font-sans">
-    <div class="max-w-xl mx-auto">
-    <nav class="mb-8">
-        <a href="/opportunities" class="text-purple-600 hover:underline font-medium">← Back</a>
-    </nav>
+        <div class="min-h-screen bg-gray-50 p-8 font-sans">
+            <div class="max-w-xl mx-auto">
+                <nav class="mb-8">
+                    <a href="/opportunities" class="text-purple-600 hover:underline font-medium">← Back</a>
+            </nav>
 
     <div class="bg-white border border-gray-200 rounded-2xl shadow-xl overflow-hidden">
     <div class="bg-purple-600 p-6 text-white">
